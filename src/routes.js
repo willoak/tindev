@@ -2,7 +2,9 @@
 // 07 chamar novamente o express pois sem ele o arquivo nao funciona
 const express = require('express');
 // 016 importar controller dev
-const DevController = require('./controllers/DevController')
+const DevController = require('./controllers/DevController');
+const LikeController = require('./controllers/LikeController');
+const DislikeController = require('./controllers/DislikeController');
 
 // 08 usando o router que é um objeto expecífico para rotas
 const routes = express.Router();
@@ -22,7 +24,12 @@ routes.post('/devs', (req, res)=> {
 */
 
 // 017 como agora temos controllers podemos alterar a nossa rota dev para chamar o devController
-routes.post('/devs', DevController.store)
+routes.post('/devs', DevController.store);
+
+// 027 criando rota para dar like no usuario
+routes.post('/devs/:devId/likes', LikeController.store);
+
+routes.post('/devs/:devId/dislikes', DislikeController.store);
 
 // 09 agora precisamos liberar essas rotas para serem usadas no arquivo server.js
 module.exports = routes;

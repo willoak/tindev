@@ -16,6 +16,15 @@ const DevSchema = new Schema({
         type: String,
         required: true
     },
+    // 025 adicinando novos campos no banco para saber se deu like ou dislike
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Dev',
+    }],
+    dislikes:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Dev',
+    }],
 }, {
     timestamps: true, //armazena a data de craicao e data de atualizao do usuario
 });
